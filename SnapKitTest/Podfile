@@ -7,6 +7,7 @@ target 'SnapKitTest' do
 
   # Pods for SnapKitTest
 pod 'SnapKit'
+pod 'Then'
 
   target 'SnapKitTestTests' do
     inherit! :search_paths
