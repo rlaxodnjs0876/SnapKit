@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Then
 
 class ViewController: UIViewController {
         
@@ -17,6 +18,13 @@ class ViewController: UIViewController {
     var blueView = UIView()
     var indigoView = UIView()
     var purpleView = UIView()
+    
+    let thenLabel = UILabel().then {
+        $0.textColor = UIColor.red
+        $0.textAlignment = .left
+        $0.text = "뭘봐"
+        $0.font = UIFont(name: "ArialHebrew", size: UIFont.labelFontSize)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,42 +46,9 @@ class ViewController: UIViewController {
         indigoView.backgroundColor = .systemIndigo
         purpleView.backgroundColor = .purple
         
-        redView.snp.makeConstraints { make in
-            make.top.equalTo(view.snp.top)
-            make.size.width.height.equalTo(100)
-            make.left.equalTo(view.snp.left)
-        }
-        orangeView.snp.makeConstraints { make in
-            make.top.equalTo(redView.snp.bottom)
-            make.size.width.height.equalTo(100)
-            make.left.equalTo(redView.snp.left)
-        }
-        yellowView.snp.makeConstraints { make in
-            make.top.equalTo(orangeView.snp.bottom)
-            make.size.width.height.equalTo(100)
-            make.left.equalTo(orangeView.snp.left)
-        }
-        greenView.snp.makeConstraints { make in
-            make.top.equalTo(yellowView.snp.top)
-            make.size.width.height.equalTo(100)
-            make.left.equalTo(yellowView.snp.right)
-        }
         
-        blueView.snp.makeConstraints { make in
-            make.top.equalTo(greenView.snp.top)
-            make.size.width.height.equalTo(100)
-            make.left.equalTo(greenView.snp.right)
-        }
-        indigoView.snp.makeConstraints { make in
-            make.top.equalTo(blueView.snp.top)
-            make.size.width.height.equalTo(100)
-            make.left.equalTo(blueView.snp.right)
-        }
         
-        purpleView.snp.makeConstraints { make in
-            make.center.equalTo(view.snp.center)
-            make.size.width.height.equalTo(100)
-        }
+        self.view.addSubview(thenLabel)
         
     }
 
