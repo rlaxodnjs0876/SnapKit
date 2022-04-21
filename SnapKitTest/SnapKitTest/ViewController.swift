@@ -10,48 +10,50 @@ import SnapKit
 import Then
 
 class ViewController: UIViewController {
-        
-    var redView = UIView()
-    var orangeView = UIView()
-    var yellowView = UIView()
-    var greenView = UIView()
-    var blueView = UIView()
-    var indigoView = UIView()
-    var purpleView = UIView()
     
-    let thenLabel = UILabel().then {
-        $0.textColor = UIColor.red
-        $0.textAlignment = .left
-        $0.text = "뭘봐"
-        $0.font = UIFont(name: "ArialHebrew", size: UIFont.labelFontSize)
-    }
+    let nameLabel = UILabel()
+    let nameTextField = UITextField()
+    let changeButton = UIButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
-        self.view.addSubview(redView)
-        self.view.addSubview(orangeView)
-        self.view.addSubview(yellowView)
-        self.view.addSubview(greenView)
-        self.view.addSubview(blueView)
-        self.view.addSubview(indigoView)
-        self.view.addSubview(purpleView)
-        
-        redView.backgroundColor = .red
-        orangeView.backgroundColor = .orange
-        yellowView.backgroundColor = .yellow
-        greenView.backgroundColor = .green
-        blueView.backgroundColor = .blue
-        indigoView.backgroundColor = .systemIndigo
-        purpleView.backgroundColor = .purple
-        
-        
-        
-        self.view.addSubview(thenLabel)
-        
+        setUpValue()
+        setUpView()
+        setConstraints()
     }
-
-
+    
+    // 요소 내용 설정
+    func setUpValue() {
+        nameLabel.text = "Label"
+        nameTextField.backgroundColor = .gray
+        changeButton.backgroundColor = .blue
+    }
+    
+    // 뷰 구성요소 세팅
+    func setUpView() {
+        view.addSubview(nameLabel)
+        view.addSubview(nameTextField)
+        view.addSubview(changeButton)
+    }
+    
+    // 뷰 구성요소 제약 설정
+    func setConstraints() {
+        changeButton.snp.makeConstraints { make in
+            make.center.equalToSuperview() // View의 정중앙에 배치 할 것
+        }
+        
+        nameLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(80)
+            make.leading.equalToSuperview().offset(24)
+            make.trailing.equalToSuperview().offset(-24)
+        }
+        
+        nameTextField.snp.makeConstraints { make in
+            make.top.equalTo(nameLabel.snp.bottom).offset(24)
+            make.leading.trailing.equalTo(nameLabel)
+        }
+    }
+    
+    
 }
 
