@@ -49,6 +49,7 @@ class ViewController: UIViewController {
     
     let PwDeleteBtn = UIButton().then {
         $0.setImage(UIImage(systemName: "xmark.circle"), for: .normal)
+        $0.tintColor = .black  
     }
     
 }
